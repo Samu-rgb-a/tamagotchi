@@ -42,17 +42,17 @@ public class Main {
 
     private static void mostrarEstado() {
         if (saciedad == 0 || energia == 0 || diversion == 0) {
-            System.out.println("💀 Fin del juego");
+            System.out.println("Fin del juego");
         } else if (saciedad <= 4) {
-            System.out.println("😫 Hambriento (Saciedad: " + saciedad + ")");
+            System.out.println("Hambriento (Saciedad: " + saciedad + ")");
         } else if (energia <= 4) {
-            System.out.println("😴 Cansado (Energía: " + energia + ")");
+            System.out.println("Cansado (Energía: " + energia + ")");
         } else if (diversion <= 4) {
-            System.out.println("😢 Triste (Diversión: " + diversion + ")");
+            System.out.println("Triste (Diversión: " + diversion + ")");
         } else if (saciedad > 5 && energia > 5 && diversion > 5) {
-            System.out.println("😃 Contento (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
+            System.out.println("Contento (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
         } else {
-            System.out.println("🙂 Estado normal (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
+            System.out.println("Estado normal (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
         }
     }
 
@@ -62,8 +62,8 @@ public class Main {
 
     private static void opcionComer() {
         if (saciedad < 10) {
-            saciedad = Math.min(saciedad + 3, 10); // aumenta hasta 5 puntos, máximo 10
-            diversion = Math.max(diversion - 1, 0); // disminuye diversión en 1
+            saciedad = Math.min(saciedad + 4, 10);
+            diversion = Math.max(diversion - 2, 0);
             mostrarEstado();
         } else {
             System.out.println("No tengo hambre");
@@ -72,9 +72,9 @@ public class Main {
 
     private static void opcionJugar() {
         if (diversion < 10) {
-            diversion = Math.min(diversion + 3, 10);
-            saciedad = Math.max(saciedad - 1, 0);
-            energia = Math.max(energia - 1, 0);
+            diversion = Math.min(diversion + 5, 10);
+            saciedad = Math.max(saciedad - 2, 0);
+            energia = Math.max(energia - 3, 0);
             mostrarEstado();
         } else {
             System.out.println("Ahora no me apetece jugar");
@@ -83,9 +83,9 @@ public class Main {
 
     private static void opcionDormir() {
         if (energia < 10) {
-            energia = Math.min(energia + 3, 10);
-            saciedad = Math.max(saciedad - 3, 0);
-            diversion = Math.max(diversion - 2, 0);
+            energia = Math.min(energia + 6, 10);
+            saciedad = Math.max(saciedad - 4, 0);
+            diversion = Math.max(diversion - 3, 0);
             mostrarEstado();
         } else {
             System.out.println("No tengo sueño");
@@ -95,7 +95,7 @@ public class Main {
     public static void main(String[] args) {
         int opcion;
 
-        System.out.println("🐾 ¡Bienvenido a tu Tamagotchi!");
+        System.out.println("¡Bienvenido a tu Tamagotchi!");
         mostrarEstado();
 
         do {
@@ -120,7 +120,7 @@ public class Main {
             }
 
             if (saciedad == 0 || energia == 0 || diversion == 0) {
-                System.out.println("💀 Tu Tamagotchi ha terminado el juego.");
+                System.out.println("Tu Tamagotchi ha terminado el juego.");
                 break;
             }
 
