@@ -13,7 +13,7 @@ public class Main {
 
     // Menú principal con validación
     private static int menuPrincipal() {
-        int opcion;
+        int opcion = -1;
         do {
             System.out.println("\n==========================");
             System.out.println("1. Estado");
@@ -25,21 +25,24 @@ public class Main {
             System.out.println("==========================");
             System.out.print("Seleccione una opción del menú: ");
 
-            if (sc.hasNextInt()) {
-                opcion = sc.nextInt();
-            } else {
+            String linea = sc.nextLine(); // leemos toda la línea
+            try {
+                opcion = Integer.parseInt(linea); // convertimos a número
+            } catch (NumberFormatException e) {
                 System.out.println("Opción no válida. Inténtelo de nuevo.");
-                sc.next(); // descarta entrada inválida
                 opcion = -1; // fuerza repetir bucle
             }
 
             if (opcion < 0 || opcion > 4) {
                 System.out.println("Opción no válida. Inténtelo de nuevo.");
             }
+
         } while (opcion < 0 || opcion > 4);
 
         return opcion;
     }
+
+
 
     // Muestra el estado del Tamagotchi
     private static void mostrarEstado() {
@@ -66,7 +69,7 @@ public class Main {
     // Opción 2: Comer
     private static void opcionComer() {
         if (saciedad < 10) {
-            saciedad = Math.min(saciedad + 5, 10); // aumenta hasta 5 puntos, máximo 10
+            saciedad = Math.min(saciedad + 3, 10); // aumenta hasta 5 puntos, máximo 10
             diversion = Math.max(diversion - 1, 0); // disminuye diversión en 1
             mostrarEstado();
         } else {
