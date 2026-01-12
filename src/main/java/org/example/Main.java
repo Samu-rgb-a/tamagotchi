@@ -50,6 +50,7 @@ public class Main {
         int opcion;
 
         System.out.println("¡Bienvenido a tu Tamagotchi!");
+        mostrarEstado();
 
         do {
             opcion = menuPrincipal();
