@@ -4,14 +4,12 @@ import java.util.Scanner;
 
 public class Main {
 
-    // Variables globales del Tamagotchi
     private static int saciedad = 6;
     private static int energia = 6;
     private static int diversion = 6;
 
     private static Scanner sc = new Scanner(System.in);
 
-    // Menú principal con validación
     private static int menuPrincipal() {
         int opcion = -1;
         do {
@@ -25,12 +23,12 @@ public class Main {
             System.out.println("==========================");
             System.out.print("Seleccione una opción del menú: ");
 
-            String linea = sc.nextLine(); // leemos toda la línea
+            String linea = sc.nextLine();
             try {
-                opcion = Integer.parseInt(linea); // convertimos a número
+                opcion = Integer.parseInt(linea);
             } catch (NumberFormatException e) {
                 System.out.println("Opción no válida. Inténtelo de nuevo.");
-                opcion = -1; // fuerza repetir bucle
+                opcion = -1;
             }
 
             if (opcion < 0 || opcion > 4) {
@@ -42,9 +40,6 @@ public class Main {
         return opcion;
     }
 
-
-
-    // Muestra el estado del Tamagotchi
     private static void mostrarEstado() {
         if (saciedad == 0 || energia == 0 || diversion == 0) {
             System.out.println("💀 Fin del juego");
@@ -61,12 +56,10 @@ public class Main {
         }
     }
 
-    // Opción 1: Estado
     private static void opcionEstado() {
         mostrarEstado();
     }
 
-    // Opción 2: Comer
     private static void opcionComer() {
         if (saciedad < 10) {
             saciedad = Math.min(saciedad + 3, 10); // aumenta hasta 5 puntos, máximo 10
@@ -77,7 +70,6 @@ public class Main {
         }
     }
 
-    // Opción 3: Jugar
     private static void opcionJugar() {
         if (diversion < 10) {
             diversion = Math.min(diversion + 3, 10);
@@ -89,18 +81,22 @@ public class Main {
         }
     }
 
-    // Opción 4: Dormir
     private static void opcionDormir() {
-        energia = Math.min(energia + 3, 10);
-        saciedad = Math.max(saciedad - 2, 0);
-        mostrarEstado();
+        if (energia < 10) {
+            energia = Math.min(energia + 3, 10);
+            saciedad = Math.max(saciedad - 3, 0);
+            diversion = Math.max(diversion - 2, 0);
+            mostrarEstado();
+        } else {
+            System.out.println("No tengo sueño");
+        }
     }
 
     public static void main(String[] args) {
         int opcion;
 
         System.out.println("🐾 ¡Bienvenido a tu Tamagotchi!");
-        mostrarEstado(); // Estado inicial
+        mostrarEstado();
 
         do {
             opcion = menuPrincipal();
@@ -123,7 +119,6 @@ public class Main {
                     break;
             }
 
-            // Fin del juego
             if (saciedad == 0 || energia == 0 || diversion == 0) {
                 System.out.println("💀 Tu Tamagotchi ha terminado el juego.");
                 break;
