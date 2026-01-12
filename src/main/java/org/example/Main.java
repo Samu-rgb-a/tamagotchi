@@ -79,13 +79,13 @@ public class Main {
 
     // Opción 3: Jugar
     private static void opcionJugar() {
-        if (energia > 1) { // solo puede jugar si tiene energía suficiente
-            diversion = Math.min(diversion + 2, 10);
-            energia = Math.max(energia - 2, 0);
+        if (diversion < 10) {
+            diversion = Math.min(diversion + 3, 10);
             saciedad = Math.max(saciedad - 1, 0);
+            energia = Math.max(energia - 1, 0);
             mostrarEstado();
         } else {
-            System.out.println("Estoy demasiado cansado para jugar");
+            System.out.println("Ahora no me apetece jugar");
         }
     }
 
