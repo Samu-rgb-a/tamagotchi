@@ -43,14 +43,29 @@ public class Main {
     private static void mostrarEstado() {
         if (saciedad == 0 || energia == 0 || diversion == 0) {
             System.out.println("Fin del juego");
+            System.out.println("(x_x) :( Game Over ):\n" +
+                    "/|_|\\\n" +
+                    " | |");
         } else if (saciedad <= 4) {
             System.out.println("Hambriento (Saciedad: " + saciedad + ")");
+            System.out.println("(•︵•) ¡ Tengo hambre! \uD83C\uDF57\n" +
+                    "/|x|\\\n" +
+                    " | | ");
         } else if (energia <= 4) {
             System.out.println("Cansado (Energía: " + energia + ")");
+            System.out.println("(-_-) Zzz\n" +
+                    "/|_|\\\n" +
+                    " | |");
         } else if (diversion <= 4) {
             System.out.println("Triste (Diversión: " + diversion + ")");
+            System.out.println("(-︵-) Estoy aburrido\n" +
+                    "/|_|\\ ¡Juega conmigo!\n" +
+                    " / \\");
         } else if (saciedad > 5 && energia > 5 && diversion > 5) {
             System.out.println("Contento (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
+            System.out.println("(•‿•) ¡Estoy feliz!\n" +
+                    "/|_|\\\n" +
+                    " | |");
         } else {
             System.out.println("Estado normal (S:" + saciedad + " E:" + energia + " D:" + diversion + ")");
         }
