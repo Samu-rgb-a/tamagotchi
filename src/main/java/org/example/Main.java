@@ -18,6 +18,7 @@ public class Main {
             System.out.println("2. Comer");
             System.out.println("3. Jugar");
             System.out.println("4. Dormir");
+            System.out.println("5. Lavarse");
             System.out.println("----------------");
             System.out.println("0. Salir");
             System.out.println("==========================");
@@ -31,11 +32,11 @@ public class Main {
                 opcion = -1;
             }
 
-            if (opcion < 0 || opcion > 4) {
+            if (opcion < 0 || opcion > 5) {
                 System.out.println("Opción no válida. Inténtelo de nuevo.");
             }
 
-        } while (opcion < 0 || opcion > 4);
+        } while (opcion < 0 || opcion > 5);
 
         return opcion;
     }
@@ -85,6 +86,17 @@ public class Main {
         }
     }
 
+    private static void opcionLavarse() {
+        if (energia < 10) {
+            diversion = Math.min(diversion + 2, 10);
+            energia = Math.min(energia + 1, 10);
+            saciedad = Math.max(saciedad - 1, 0);
+            mostrarEstado();
+        } else {
+            System.out.println("No me apetece bañarme ahora");
+        }
+    }
+
     private static void opcionJugar() {
         if (diversion < 10) {
             diversion = Math.min(diversion + 5, 10);
@@ -128,6 +140,9 @@ public class Main {
                     break;
                 case 4:
                     opcionDormir();
+                    break;
+                case 5:
+                    opcionLavarse();
                     break;
                 case 0:
                     System.out.println("¡Adiós!");
